@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, Users, Video, BookOpen } from "lucide-react";
+import { Clock, Users, Video, BookOpen, Landmark } from "lucide-react";
 
 export const Services = () => {
   const services = [
@@ -9,7 +9,7 @@ export const Services = () => {
       title: "Group Classes",
       description: "Interactive group sessions with 4-6 students for collaborative learning",
       features: ["Weekly 90-minute sessions", "Structured curriculum", "Peer interaction", "Affordable pricing"],
-      price: "From $45/session",
+      // price: "From $45/session",
       highlight: false
     },
     {
@@ -17,25 +17,25 @@ export const Services = () => {
       title: "1-on-1 Training",
       description: "Personalized language coaching tailored to your specific goals and pace",
       features: ["Customized lesson plans", "Flexible scheduling", "Focused attention", "Rapid progress"],
-      price: "From $85/hour",
+      // price: "From $85/hour",
       highlight: true
     },
     {
-      icon: Clock,
-      title: "Intensive Courses",
+      icon: Landmark,
+      title: "Corporate Training",
       description: "Accelerated programs for those who need to learn quickly",
       features: ["Daily sessions available", "Immersive approach", "Quick results", "Professional goals"],
-      price: "From $120/hour",
-      highlight: false
-    },
-    {
-      icon: BookOpen,
-      title: "Consultation Call",
-      description: "Free 30-minute session to assess your needs and create a learning plan",
-      features: ["Skill assessment", "Goal setting", "Learning plan", "Method recommendation"],
-      price: "Free",
+      // price: "From $120/hour",
       highlight: false
     }
+    // {
+    //   icon: BookOpen,
+    //   title: "Consultation Call",
+    //   description: "Free 30-minute session to assess your needs and create a learning plan",
+    //   features: ["Skill assessment", "Goal setting", "Learning plan", "Method recommendation"],
+    //   price: "Free",
+    //   highlight: false
+    // }
   ];
 
   return (
@@ -48,7 +48,7 @@ export const Services = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <Card 
               key={index} 
@@ -83,15 +83,15 @@ export const Services = () => {
                 </ul>
                 
                 <div className="space-y-4">
-                  <div className="text-center">
+                  {/* <div className="text-center">
                     <span className="text-2xl font-bold text-foreground">{service.price}</span>
-                  </div>
+                  </div> */}
                   
                   <Button 
                     variant={service.highlight ? "hero" : "outline"} 
                     className="w-full"
                   >
-                    {service.price === "Free" ? "Schedule Free Call" : "Book Now"}
+                    Schedule Free Call
                   </Button>
                 </div>
               </CardContent>

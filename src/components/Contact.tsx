@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar, Mail, Phone, MapPin } from "lucide-react";
+import { Calendar, Mail, Phone, MapPin, MailIcon } from "lucide-react";
 
 export const Contact = () => {
   return (
@@ -45,7 +45,7 @@ export const Contact = () => {
               
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone (Optional)</Label>
-                <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
+                <Input id="phone" type="tel" placeholder="+254 712 345 678" />
               </div>
               
               <div className="space-y-2">
@@ -55,15 +55,16 @@ export const Contact = () => {
                     <SelectValue placeholder="Select a language" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="spanish">Spanish</SelectItem>
-                    <SelectItem value="french">French</SelectItem>
-                    <SelectItem value="german">German</SelectItem>
+                    <SelectItem value="english">English</SelectItem>
+                    <SelectItem value="swahili">Swahili</SelectItem>
+                    <SelectItem value="local">Kenyan Local Language</SelectItem>
+                    {/* <SelectItem value="german">German</SelectItem>
                     <SelectItem value="italian">Italian</SelectItem>
                     <SelectItem value="portuguese">Portuguese</SelectItem>
                     <SelectItem value="mandarin">Mandarin</SelectItem>
                     <SelectItem value="japanese">Japanese</SelectItem>
                     <SelectItem value="korean">Korean</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="other">Other</SelectItem> */}
                   </SelectContent>
                 </Select>
               </div>
@@ -95,7 +96,7 @@ export const Contact = () => {
               
               <Button variant="hero" className="w-full text-lg py-6">
                 <Calendar className="w-5 h-5 mr-2" />
-                Schedule Free Consultation
+                Book Consultation
               </Button>
             </CardContent>
           </Card>
@@ -104,9 +105,9 @@ export const Contact = () => {
           <div className="space-y-8">
             <Card className="shadow-soft">
               <CardHeader>
-                <CardTitle>Get in Touch</CardTitle>
+                <CardTitle>Let’s Start Your Swahili Journey</CardTitle>
                 <CardDescription>
-                  Have questions? I'm here to help you choose the right learning path.
+                  Reach out today, and let’s shape a learning path that works for you.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -116,7 +117,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium text-foreground">Email</div>
-                    <div className="text-muted-foreground">hello@linguaexpert.com</div>
+                    <div className="text-muted-foreground">juliuswambua63@gmail.com</div>
                   </div>
                 </div>
                 
@@ -125,18 +126,26 @@ export const Contact = () => {
                     <Phone className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <div className="font-medium text-foreground">Phone</div>
-                    <div className="text-muted-foreground">+1 (555) 123-4567</div>
+                    <div className="font-medium text-foreground">Phone 1</div>
+                    <div className="text-muted-foreground">+254 712 876 858</div>
                   </div>
                 </div>
-                
+                 <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground">Phone 2</div>
+                    <div className="text-muted-foreground">+254 733 795 959</div>
+                  </div>
+                </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <div>
                     <div className="font-medium text-foreground">Location</div>
-                    <div className="text-muted-foreground">Online & San Francisco, CA</div>
+                    <div className="text-muted-foreground">Online & Nairobi, Kenya</div>
                   </div>
                 </div>
               </CardContent>
@@ -145,20 +154,20 @@ export const Contact = () => {
             {/* Quick Booking Options */}
             <Card className="shadow-soft bg-gradient-to-br from-primary/5 to-accent/5">
               <CardHeader>
-                <CardTitle>Quick Booking Options</CardTitle>
+                <CardTitle>Quick Options</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Button variant="outline" className="w-full justify-start">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Free 30-min Consultation
+                  <Phone className="w-4 h-4 mr-2" />
+                  Book a Consultation Call
                 </Button>
                 <Button variant="outline" className="w-full justify-start">
                   <Calendar className="w-4 h-4 mr-2" />
-                  Trial Group Class
+                  Chat on WhatsApp
                 </Button>
                 <Button variant="outline" className="w-full justify-start">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  1-on-1 Assessment Session
+                  <MailIcon className="w-4 h-4 mr-2" />
+                  Reach out On Email
                 </Button>
               </CardContent>
             </Card>

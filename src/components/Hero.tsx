@@ -8,21 +8,21 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                Master Any Language with
-                <span className="bg-gradient-hero bg-clip-text text-transparent"> Expert Guidance</span>
+              <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight"> 
+                <span className="bg-gradient-hero bg-clip-text text-transparent"> Swahili </span> made simple with
+                <span className="bg-gradient-hero bg-clip-text text-transparent"> Expert </span> guidance
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Unlock fluency through personalized language training. Whether you're starting fresh or polishing your skills, I'll guide you to confident communication.
-              </p>
+                Unlock the rhythm and beauty of Swahili. More than just words, you’ll gain the skills to connect deeply with people, culture, and traditions, while growing into a confident communicator
+                 </p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" className="text-lg px-8 py-4">
-                Start Learning Today
+                Consult on Email
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-                Free Consultation
+                Consult on WhatsApp
               </Button>
             </div>
             
@@ -33,11 +33,11 @@ export const Hero = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-accent rounded-full"></div>
-                <span>500+ Students Taught</span>
+                <span>1000+ Students Trained</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <span>15+ Languages</span>
+                <span>Learners from 20+ Nationalities</span>
               </div>
             </div>
           </div>
