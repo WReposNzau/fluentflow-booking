@@ -1,102 +1,100 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, Users, Video, BookOpen, Landmark } from "lucide-react";
+import serviceIcon1 from "@/assets/service-icon-1.jpg";
+import serviceIcon2 from "@/assets/service-icon-2.jpg"; 
+import serviceIcon3 from "@/assets/service-icon-3.jpg";
 
 export const Services = () => {
   const services = [
     {
-      icon: Users,
-      title: "Group Classes",
-      description: "Interactive group sessions with 4-6 students for collaborative learning",
-      features: ["Weekly 90-minute sessions", "Structured curriculum", "Peer interaction", "Affordable pricing"],
-      // price: "From $45/session",
-      highlight: false
+      title: "Cross-Cultural Communication Training",
+      description: "Comprehensive programs designed to bridge cultural gaps and enhance international business communication.",
+      features: ["Cultural Intelligence Development", "Business Etiquette Training", "Intercultural Negotiation Skills", "Global Team Collaboration"],
+      price: "Starting from $200/session",
+      image: serviceIcon1,
+      popular: false
     },
     {
-      icon: Video,
-      title: "1-on-1 Training",
-      description: "Personalized language coaching tailored to your specific goals and pace",
-      features: ["Customized lesson plans", "Flexible scheduling", "Focused attention", "Rapid progress"],
-      // price: "From $85/hour",
-      highlight: true
+      title: "Corporate Language Training",
+      description: "Tailored language programs for organizations looking to enhance their team's communication capabilities.",
+      features: ["Customized Curriculum", "Group & Individual Sessions", "Industry-Specific Vocabulary", "Progress Tracking & Assessment"],
+      price: "Starting from $150/session",
+      image: serviceIcon2,
+      popular: true
     },
     {
-      icon: Landmark,
-      title: "Corporate Training",
-      description: "Accelerated programs for those who need to learn quickly",
-      features: ["Daily sessions available", "Immersive approach", "Quick results", "Professional goals"],
-      // price: "From $120/hour",
-      highlight: false
+      title: "Personal Language Coaching",
+      description: "One-on-one personalized language coaching sessions focused on your specific goals and learning style.",
+      features: ["Personalized Learning Plan", "Flexible Scheduling", "Conversation Practice", "Cultural Context Learning"],
+      price: "Starting from $80/session",
+      image: serviceIcon3,
+      popular: false
     }
-    // {
-    //   icon: BookOpen,
-    //   title: "Consultation Call",
-    //   description: "Free 30-minute session to assess your needs and create a learning plan",
-    //   features: ["Skill assessment", "Goal setting", "Learning plan", "Method recommendation"],
-    //   price: "Free",
-    //   highlight: false
-    // }
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-foreground">Choose Your Learning Path</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Whether you prefer group dynamics or personalized attention, I have the perfect program for your language learning journey.
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+            <span className="text-sm font-medium text-accent">Professional Services</span>
+          </div>
+          <h2 className="text-3xl lg:text-5xl font-bold text-primary">
+            Discover Our Training Services
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Explore comprehensive language and cross-cultural training solutions designed to meet your specific needs and goals.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className={`relative transition-all duration-300 hover:shadow-soft ${
-                service.highlight ? 'ring-2 ring-primary shadow-soft' : ''
-              }`}
-            >
-              {service.highlight && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            <Card key={index} className={`relative hover:shadow-accent transition-all duration-300 hover:-translate-y-2 ${service.popular ? 'ring-2 ring-accent shadow-accent' : ''}`}>
+              {service.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-gradient-accent px-4 py-2 rounded-full text-sm font-semibold text-primary">
                     Most Popular
                   </span>
                 </div>
               )}
               
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <service.icon className="w-6 h-6 text-white" />
+              <CardHeader className="text-center space-y-4">
+                <div className="mx-auto w-20 h-20 rounded-2xl overflow-hidden shadow-soft">
+                  <img 
+                    src={service.image} 
+                    alt={`${service.title} service illustration`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <CardDescription className="text-center">{service.description}</CardDescription>
+                <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
+                <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
               </CardHeader>
               
               <CardContent className="space-y-6">
-                <ul className="space-y-2">
+                <div className="space-y-3">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      {feature}
-                    </li>
+                    <div key={idx} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0"></div>
+                      <span className="text-sm text-foreground">{feature}</span>
+                    </div>
                   ))}
-                </ul>
+                </div>
                 
-                <div className="space-y-4">
-                  {/* <div className="text-center">
-                    <span className="text-2xl font-bold text-foreground">{service.price}</span>
-                  </div> */}
-                  
-                  <Button 
-                    variant={service.highlight ? "hero" : "outline"} 
-                    className="w-full"
-                  >
-                    Schedule Free Call
+                <div className="pt-4 border-t border-border">
+                  <div className="text-2xl font-bold text-primary mb-2">{service.price}</div>
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
+                    Learn More
                   </Button>
                 </div>
               </CardContent>
             </Card>
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" className="px-12 py-3 text-primary border-primary hover:bg-primary hover:text-white">
+            View All Services
+          </Button>
         </div>
       </div>
     </section>
