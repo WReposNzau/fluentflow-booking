@@ -1,37 +1,61 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Toaster } from "sonner";
+import { ReviewModal } from "./Review";
 
-export const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Sarah Chen",
-      role: "Marketing Manager",
-      language: "Spanish",
-      rating: 5,
-      text: "In just 6 months, I went from basic Spanish to confidently presenting to our Latin American clients. The personalized approach made all the difference!"
-    },
-    {
-      name: "Marcus Johnson",
-      role: "Software Engineer",
-      language: "German",
-      rating: 5,
-      text: "The flexible scheduling and practical focus helped me land my dream job in Berlin. Couldn't have done it without this expert guidance!"
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Travel Blogger",
-      language: "Japanese",
-      rating: 5,
-      text: "Learning Japanese seemed impossible until I found this program. The cultural insights combined with language skills were invaluable for my travels."
-    },
-    {
-      name: "David Kim",
-      role: "Business Owner",
-      language: "French",
-      rating: 5,
-      text: "Excellent teaching methodology and genuine care for student progress. Now I can negotiate confidently with French suppliers."
-    }
-  ];
+interface Testimonial {
+  firstName: string;
+  lastName: string;
+  occupation: string;
+  nationality:string
+  languageTrained: string;
+  review: string;
+  stars: number;
+}
+
+interface TestimonialsProps {
+  handleNewReview: (newReview: Testimonial) => void;
+}
+
+export const Testimonials = ({ handleNewReview }: TestimonialsProps) => {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [averagerate, setaverage] = useState("0")
+
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch('https://site-reviews-ten.vercel.app/reviews');
+        if (!response.ok) {
+          throw new Error('Failed to fetch reviews');
+        }
+        const data = await response.json();
+        setTestimonials(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch reviews');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+    
+  }, []);
+
+  useEffect(() => {
+  if (testimonials.length > 0) {
+    const totalstars = testimonials.reduce((acc, item) => acc + item.stars, 0);
+    const averagestars = (totalstars / testimonials.length).toFixed(2);
+    setaverage(averagestars);
+  }
+}, [testimonials]);
+
+
+
+  
 
   return (
     <section id="testimonials" className="py-20 bg-background">
@@ -45,36 +69,40 @@ export const Testimonials = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid items-center md:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="h-full transition-all duration-300 hover:shadow-soft">
               <CardContent className="p-6 space-y-4">
                 <div className="flex items-center space-x-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {[...Array(testimonial.stars)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 
                 <p className="text-muted-foreground leading-relaxed text-sm">
-                  "{testimonial.text}"
+                  "{testimonial.review}"
                 </p>
                 
                 <div className="border-t pt-4">
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  <div className="font-semibold text-foreground">{`${testimonial.firstName} ${testimonial.lastName}`}</div>
+                  <div className="text-sm text-muted-foreground">{testimonial.occupation}, {testimonial.nationality}</div>
                   <div className="text-xs text-primary font-medium mt-1">
-                    Learned {testimonial.language}
+                    Learned {testimonial.languageTrained}
                   </div>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
+
+        {/* <div className="text-center mt-12">
+          <ReviewModal onReviewAdded={handleNewReview} />
+        </div> */}
         
         <div className="text-center mt-12">
           <div className="inline-flex items-center space-x-8 bg-white rounded-2xl p-6 shadow-soft">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">4.9</div>
+              <div className="text-3xl font-bold text-primary">{averagerate}</div>
               <div className="text-sm text-muted-foreground">Average Rating</div>
             </div>
             <div className="w-px h-12 bg-border"></div>

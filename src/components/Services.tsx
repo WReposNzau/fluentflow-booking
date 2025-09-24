@@ -11,24 +11,24 @@ export const Services = () => {
       description: "Comprehensive programs designed to bridge cultural gaps and enhance international business communication.",
       features: ["Cultural Intelligence Development", "Business Etiquette Training", "Intercultural Negotiation Skills", "Global Team Collaboration"],
       price: "Starting from $200/session",
-      image: serviceIcon1,
-      popular: false
+      icon: serviceIcon1,
+      highlight: false
     },
     {
       title: "Corporate Language Training",
       description: "Tailored language programs for organizations looking to enhance their team's communication capabilities.",
       features: ["Customized Curriculum", "Group & Individual Sessions", "Industry-Specific Vocabulary", "Progress Tracking & Assessment"],
       price: "Starting from $150/session",
-      image: serviceIcon2,
-      popular: true
+      icon: serviceIcon2,
+      highlight: true
     },
     {
       title: "Personal Language Coaching",
       description: "One-on-one personalized language coaching sessions focused on your specific goals and learning style.",
       features: ["Personalized Learning Plan", "Flexible Scheduling", "Conversation Practice", "Cultural Context Learning"],
       price: "Starting from $80/session",
-      image: serviceIcon3,
-      popular: false
+      icon: serviceIcon3,
+      highlight: false
     }
   ];
 
@@ -49,21 +49,26 @@ export const Services = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className={`relative hover:shadow-accent transition-all duration-300 hover:-translate-y-2 ${service.popular ? 'ring-2 ring-accent shadow-accent' : ''}`}>
-              {service.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-accent px-4 py-2 rounded-full text-sm font-semibold text-primary">
+            <Card 
+              key={index} 
+              className={`relative transition-all duration-300 hover:shadow-soft ${
+                service.highlight ? 'ring-2 ring-accent shadow-soft' : ''
+              }`}
+            >
+              {service.highlight && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-gradient-accent text-white px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
               )}
               
-              <CardHeader className="text-center space-y-4">
-                <div className="mx-auto w-20 h-20 rounded-2xl overflow-hidden shadow-soft">
-                  <img 
-                    src={service.image} 
-                    alt={`${service.title} service illustration`}
-                    className="w-full h-full object-cover"
+              <CardHeader className="text-center">
+                <div className={service.highlight ? `w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-4` : `w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4`}>
+                  <img
+                    src={service.icon}
+                    alt={`${service.title} icon`}
+                    className="w-6 h-6 object-cover rounded-full"
                   />
                 </div>
                 <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
@@ -80,10 +85,16 @@ export const Services = () => {
                   ))}
                 </div>
                 
-                <div className="pt-4 border-t border-border">
-                  <div className="text-2xl font-bold text-primary mb-2">{service.price}</div>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
-                    Learn More
+                <div className="space-y-4">
+                  {/* <div className="text-center">
+                    <span className="text-2xl font-bold text-foreground">{service.price}</span>
+                  </div> */}
+                  
+                  <Button 
+                    variant={service.highlight ? "booking" : "outline"} 
+                    className="w-full"
+                  >
+                    Schedule Free Call
                   </Button>
                 </div>
               </CardContent>

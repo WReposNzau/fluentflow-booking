@@ -12,7 +12,10 @@ export const Header = () => {
                 alt="Julius Wambua Language and Cross-Cultural Trainers logo" 
                 className="w-12 h-12"
               />
-          <span className="text-xl font-bold text-primary">Julius Wambua</span>
+          {/* <div className="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
+            
+          </div> */}
+          <span className="text-xl font-bold text-foreground">JWLCT</span>
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">

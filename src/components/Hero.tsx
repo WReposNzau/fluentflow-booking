@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-service-discovery.jpg";
+import heroImage from "@/assets/hero-language-learning.jpg";
+import dadlogo from '@/assets/dadlogo.png'
 
 export const Hero = () => {
   return (
@@ -47,39 +48,25 @@ export const Hero = () => {
           </div>
           
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl shadow-warm">
+            {/* <div className="relative overflow-hidden rounded-2xl shadow-soft"> */}
               <img 
-                src={heroImage} 
-                alt="Professional cross-cultural training session with diverse team" 
+                src={dadlogo} 
+                alt="Language learning session with diverse students" 
                 className="w-full h-[500px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
-            </div>
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div> */}
+            {/* </div> */}
             
-            {/* Floating achievement cards */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-4 shadow-accent">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🏆</span>
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-primary">98% Success</div>
-                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
+            {/* Floating stats cards */}
+            {/* <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-soft">
+              <div className="text-2xl font-bold text-primary">98%</div>
+              <div className="text-sm text-muted-foreground">Success Rate</div>
+            </div> */}
             
-            <div className="absolute -top-6 -right-6 bg-white rounded-xl p-4 shadow-accent">
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
-                  <span className="text-2xl">⭐</span>
-                </div>
-                <div>
-                  <div className="text-lg font-bold text-primary">4.9★</div>
-                  <div className="text-sm text-muted-foreground">Expert Rating</div>
-                </div>
-              </div>
-            </div>
+            {/* <div className="absolute -top-4 -right-4 bg-white rounded-xl p-4 shadow-soft">
+              <div className="text-2xl font-bold text-accent">4.9★</div>
+              <div className="text-sm text-muted-foreground">Student Rating</div>
+            </div> */}
           </div>
         </div>
       </div>
